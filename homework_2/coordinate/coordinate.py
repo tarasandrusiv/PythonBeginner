@@ -1,0 +1,5 @@
+x = input('x: ')
+y = input('y: ')
+z = input('z: ')
+coordinate = (x, y, z)
+print(coordinate)
