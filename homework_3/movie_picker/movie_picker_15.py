@@ -1,3 +1,5 @@
+if __name__ == '__main__':
+    print('Task 15. Movie picker Version 1.')
 GENRES = {
     'comedy': ['Meet the Parents', 'Anger Management'],
     'adventures': ['Mummy'],
@@ -43,30 +45,6 @@ print("Available Movies:", found_movies)
 picked_movie = input("Enter movie: ")
 if picked_movie in found_movies:
     print("Movie to watch: ", picked_movie, ". Genre: ", pick_genre)
-
-GENRES = {
-    'comedy': ['Meet the Parents', 'Anger Management'],
-    'adventures': ['Mummy'],
-    'romantic': ['Vanilla Sky', 'Meet Joe Black'],
-    'drama': ['Meet Joe Black'],
-    'thriller': ['Vanilla Sky'],
-    'action': ['Mission Impossible']
-}
-
-ACTORS = {
-    'Robert De Niro': ['Meet the Parents'],
-    'Ben Stiller': ['Meet the Parents'],
-    'Adam Sandler': ['Anger Management'],
-    'Jack Nicholson': ['Anger Management'],
-    'Brendan Fraser': ['Mummy'],
-    'Rachel Weisz': ['Mummy'],
-    'Tom Cruise': ['Vanilla Sky', 'Mission Impossible'],
-    'Penelope Cruz': ['Vanilla Sky'],
-    'Cameron Diaz': ['Vanilla Sky'],
-    'Brad Pitt': ['Meet Joe Black'],
-    'Anthony Hopkins': ['Meet Joe Black'],
-    'Jeremy Renner': ['Mission Impossible']
-}
 
 # Ask user if they want to see the list of available actors
 show_actors = input("Do you want to see the list of available actors? (y/n): ").strip().lower()
