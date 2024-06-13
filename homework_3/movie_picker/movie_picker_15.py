@@ -24,63 +24,44 @@ ACTORS = {
     'Jeremy Renner': ['Mission Impossible']
 }
 
-my_genre = input("Search by Genre: ")
-GENRES.keys()
-if my_genre == 'y':
+ask_search_by_genre = input("Search by Genre: ")
+while ask_search_by_genre not in ["y", "n"]:
+    ask_search_by_genre = input("Search by Genre: ")
+
+found_movies = list()
+
+if ask_search_by_genre == 'y':
     print("Available Genres: ", list(GENRES.keys()))
-elif my_genre == 'n':
-    print(my_genre)
-else:
-    print("Give correct answer")
-
-found_movies = list()
-pick_genre = input("Enter genre: ")
-
-if pick_genre in GENRES:
-    for movie in GENRES[pick_genre]:
-        found_movies.append(movie)
-
-print("Available Movies:", found_movies)
-
-picked_movie = input("Enter movie: ")
-if picked_movie in found_movies:
-    print("Movie to watch: ", picked_movie, ". Genre: ", pick_genre)
-
-# Ask user if they want to see the list of available actors
-show_actors = input("Do you want to see the list of available actors? (y/n): ").strip().lower()
-if show_actors == 'y':
-    print("Available Actors: ", list(ACTORS.keys()))
-elif show_actors == 'n':
-    print("You chose not to see the list of actors.")
-else:
-    print("Please provide a correct answer (y/n).")
-
-# Initialize an empty list to store found movies
-found_movies = list()
-
-# Ask user to pick an actor
-pick_actor = input("Enter actor: ").strip()
-
-# Check if the entered actor is in ACTORS
-if pick_actor in ACTORS:
-    for movie in ACTORS[pick_actor]:
-        found_movies.append(movie)
-    print("Movies available for the actor '{}': {}".format(pick_actor, found_movies))
-else:
-    print("Actor not found in the database.")
-
-# Ask user to pick a movie from the found movies
-if found_movies:
-    picked_movie = input("Enter movie: ").strip()
+    pick_genre = input("Enter genre: ")
+    if pick_genre in GENRES:
+        for movie in GENRES[pick_genre]:
+            found_movies.append(movie)
+    print("Available Movies:", found_movies)
+    picked_movie = input("Enter movie: ")
     if picked_movie in found_movies:
-        # Find the genre of the picked movie
-        movie_genre = None
-        for genre, movies in GENRES.items():
-            if picked_movie in movies:
-                movie_genre = genre
-                break
-        print("Movie to watch: '{}'. Starring '{}'".format(picked_movie, pick_actor))
+        print("Movie to watch: ", picked_movie, ". Genre: ", pick_genre)
     else:
-        print("The movie is not in the list of movies for the actor.")
-else:
-    print("No movies found for the actor.")
+        print("No such movie in the list")
+
+elif ask_search_by_genre == 'n':
+    ask_search_by_actor = input("Search by Actor: ").strip()
+    while ask_search_by_actor not in ["y", "n"]:
+        ask_search_by_actor = input("Search by Actor: ")
+    if ask_search_by_actor == 'y':
+        print("Available Actors: ", list(ACTORS.keys()))
+    elif ask_search_by_actor == 'n':
+        print("You chose not to see the list of actors.")
+    else:
+        print("Please provide a correct answer (y/n).")
+    pick_actor = input("Enter actor: ").strip()
+    if pick_actor in ACTORS:
+        for movie in ACTORS[pick_actor]:
+            found_movies.append(movie)
+        print("Movies available for the actor '{}': {}".format(pick_actor, found_movies))
+        picked_movie = input("Enter movie: ").strip()
+        if picked_movie in found_movies:
+            print("Movie to watch: ", picked_movie, " Starring: ", pick_actor)
+        else:
+            print("No such movie in the list")
+    else:
+        print("Actor not found in the database.")
